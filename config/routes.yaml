@@ -3,3 +3,30 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+# config/routes.yaml
+
+users_list:
+    path: /users
+    controller: App\Controller\UserController::listUsers
+    methods: [GET]
+
+users_get:
+    path: /users/{id}
+    controller: App\Controller\UserController::findUserById
+    methods: [GET]
+
+users_create:
+    path: /users/create
+    controller: App\Controller\UserController::createUser
+    methods: [POST]
+
+users_update:
+    path: /users/update
+    controller: App\Controller\UserController::updateUser
+    methods: [PUT]
+
+users_delete:
+    path: /users/delete
+    controller: App\Controller\UserController::deleteUser
+    methods: [DELETE]
