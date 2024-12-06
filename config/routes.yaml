@@ -30,3 +30,13 @@ users_delete:
     path: /users/delete
     controller: App\Controller\UserController::deleteUser
     methods: [DELETE]
+
+admin_users_list:
+    path: /admin/users
+    controller: App\Controller\UserController::listUsers
+    methods: [GET]
+
+api_login:
+    path: /api/login
+    # controller: null
+    methods: [POST]

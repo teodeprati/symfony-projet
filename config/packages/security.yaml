@@ -18,12 +18,12 @@ security:
                 check_path: /api/login
                 username_path: email
                 password_path: password
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
-
+                success-handler: lexik_jwt_authentication.handler.authentication_success
+                failure-handler: lexik_jwt_authentication.handler.authentication_failure
         api:
-            pattern: ^/api
+            pattern: ^/api|^/admin
             stateless: true
+            provider: app_user_provider
             jwt: ~
 
         logout:
@@ -31,10 +31,10 @@ security:
             stateless: true
 
     access_control:
-        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/users$, roles: ROLE_ADMIN } 
-        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
-monolog:
+        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}    
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/api, roles: ROLE_USER }
+monolog:    
     channels: ['security']
     handlers:
         security:
